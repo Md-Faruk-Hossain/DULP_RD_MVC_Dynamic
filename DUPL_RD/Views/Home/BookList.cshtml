@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DUPL_RD.Models.Book>
+@{
+    ViewBag.Title = "BookList";
+}
+
+<h1 class="text-center bg-light shadow ">Book List</h1>
+<!--Start Date :
+<input type="date" name="startdate" />
+End Date :
+<input type="date" name="enddate" />
+<input type="submit" value="Submit" class="btn btn-success shadow" />
+
+<p>-->
+@*@Html.ActionLink("Create New", "Create")*@
+<!--<a class="btn btn-success shadow" href="@Url.Action("exportReport")">Download Report</a>
+</p>-->
+
+@using (Html.BeginForm("exportReport", "Home", FormMethod.Post))
+{
+    <label for="startDate">Start Date:</label>
+    @Html.TextBox("fromDate", null, new { type = "date" })
+
+    <label for="endDate">End Date:</label>
+    @Html.TextBox("toDate", null, new { type = "date" })
+
+    <input type="submit" value="Download PDF" />
+}
+
+<div class="container shadow">
+    <div class="row">
+
+
+
+        <div class="col card ">
+            <table class="table table-bordered table-success">
+                <thead class="bg-primary ">
+                    <tr>
+                        <td>Id</td>
+                        <th>Date</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Quentity</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Date.ToShortDateString()</td>
+                            <td>@item.BookName</td>
+                            <td>@item.Author</td>
+                            <td>@item.Quentity</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+

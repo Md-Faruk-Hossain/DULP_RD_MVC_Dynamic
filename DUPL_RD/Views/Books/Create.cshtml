@@ -1,0 +1,61 @@
+﻿@model DUPL_RD.Models.Book
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Books", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <h1 class="text-center bg-light shadow "> Add Book</h1>
+                <div class="card-header">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                           
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Date, new { @class = "form-control", placeholder = "Please enter your  Date", Type = "date" })
+                                
+                                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                           
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.BookName, new { @class = "form-control", placeholder = "Please enter your Book Name" })
+                                @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                          
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Author, new { @class = "form-control", placeholder = "Please enter your Author" })
+                                @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">                          
+                            <div class="col-md-10">
+
+                                @Html.TextBoxFor(model => model.Quentity, new { @class = "form-control" , placeholder = "Please enter your Quantity" })
+                                
+                                @Html.ValidationMessageFor(model => model.Quentity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-success shadow" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

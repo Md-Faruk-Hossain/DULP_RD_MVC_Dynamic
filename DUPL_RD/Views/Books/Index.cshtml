@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DUPL_RD.Models.Book>
+@{
+    ViewBag.Title = "Index";
+}
+<h1 class="text-center bg-light shadow ">Book List</h1>
+<p>
+    @Html.ActionLink("Add Book", "Create", "Books", new { }, new { @class = "navbar-brand btn btn-success shadow " })
+</p>
+<div class="container shadow">
+    <div class="row">
+        <div class="col card ">                    
+                <table class="table table-bordered table-success" >
+                    <thead class="bg-primary ">
+                        <tr>
+                            <td>Id</td>
+                            <th>Date</th>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Quentity</th>
+                            <th>Action</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Date.ToShortDateString()</td>
+                                <td>@item.BookName</td>
+                                <td>@item.Author</td>
+                                <td>@item.Quentity</td>
+                                <td>
+
+                                    @Html.ActionLink("Edit", "Edit", "Books", new { id = item.Id }, new { @class = "navbar-brand btn btn-primary shadow " }) |
+                                    @Html.ActionLink("Delete", "Delete", "Books", new { id = item.Id }, new { @class = "navbar-brand btn btn-danger shadow " })
+
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                   
+                </table>
+            
+        </div>
+    </div>
+</div>
+
